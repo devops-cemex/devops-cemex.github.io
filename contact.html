@@ -44,6 +44,15 @@
                                     <a href="/html/services/power_solutions.html"> Power Solutions </a>
                                 </li>
                                 <li>
+                                    <a href="/html/services/generators.html"> Generators </a>
+                                </li>
+                                <li>
+                                    <a href="/html/services/solar_panels.html"> Solar Panels </a>
+                                </li>
+                                <li>
+                                    <a href="/html/services/vehicles.html"> Vehicles </a>
+                                </li>
+                                <li>
                                     <a href="/html/services/marine_welfare_solutions.html"> Marine & Welfare Solutions </a>
                                 </li>
                                 <li>
@@ -255,28 +264,26 @@
         <script src="/src/vendor/swiper/swiper-bundle.min.js"></script>
         <!-- Main JS File -->
         <script src="/src/js/main.js"></script>
-       <script>
-document.querySelector('.php-email-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
+        <script>
+            document.querySelector('.php-email-form').addEventListener('submit', async function (e) {
+                e.preventDefault();
 
-  const form = e.target;
+                const form = e.target;
 
-  const res = await fetch(form.action, {
-    method: 'POST',
-    body: new FormData(form)
-  });
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form)
+                });
 
-  const json = await res.json();
+                const json = await res.json();
 
-  if (json.success) {
-    window.location.href = 'form_submission.html';
-  } else {
-    alert(json.message || 'Submission failed');
-  }
-});
-</script>
-
-
+                if (json.success) {
+                    window.location.href = 'form_submission.html';
+                } else {
+                    alert(json.message || 'Submission failed');
+                }
+            });
+        </script>
     </body>
 
 </html>
