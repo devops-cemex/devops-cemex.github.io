@@ -325,9 +325,15 @@
 
 .bundle-card__price {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: #fff;
+}
+.bundle-card__price span {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.65);
+    
 }
 
 .bundle-card__price small {
@@ -436,7 +442,7 @@
 
 .estate-card__price {
     font-family: 'Poppins', sans-serif;
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: #fff;
     line-height: 1;
