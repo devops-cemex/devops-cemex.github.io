@@ -654,6 +654,33 @@ h6 {
 .footer .footer-bottom .footer-bottom-content .credits a:hover {
     text-decoration: underline;
 }
+/* Two-column grid used by the Services block in the footer */
+.footer .footer-services-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 0;
+    align-items: start;
+}
+
+.footer .footer-services-cols ul {
+    margin: 0;
+}
+
+
+@media (max-width: 480px) {
+    .footer .footer-services-cols {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .footer .footer-services-cols ul + ul {
+        margin-top: 10px;
+    }
+
+    .footer .footer-links.footer-services-block > h4 {
+        text-align: center;
+    }
+}
 
 @media (max-width: 991px) {
     .footer .footer-links-grid {
