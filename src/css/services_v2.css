@@ -571,6 +571,7 @@
 
 .finance-callout__cta:hover {
     background: #ffd43b;
+     color: #111;
     transform: translateY(-2px);
 }
 
