@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Power Solutions</title>
+        <meta name="description" content="Delivering tailored and fully managed power solutions, from renewable energy projects to Independent Power Producer (IPP) plants." />
+        <meta name="keywords" content="Power Solutions, Renewable Energy, IPP, Energy Management, CEMEX" />
+        <link href="/assets/imgs/general/logo/logo_no-bg.png" rel="icon" />
+        <link href="/assets/imgs/general/logo/cemex-logo.jpg" rel="apple-touch-icon" />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+        <link href="/src/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/src/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+        <link href="/src/vendor/aos/aos.css" rel="stylesheet" />
+        <link href="/src/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+        <link href="/src/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+        <link href="/src/css/main.css" rel="stylesheet" />
+        <link href="/src/css/services.css" rel="stylesheet" />
+        <style>
+            /* ========================================================================
+         1. CSS Custom Properties (Design System)
+         ======================================================================== */
+            :root {
+                --background-color: #060606;
+                --default-color: #ffffff;
+                --heading-color: #ffffff;
+                --surface-color: #252525;
+                /* --contrast-color: #ffffff;
+          --background-color: #ffffff;
+          --default-color: #342c26;
+          --heading-color: #2c1607;
+          --surface-color: #ffffff;
+          --contrast-color: #ffffff; */
+                --accent-color: #fec522;
+                /* Typography */
+                --font-primary: 'Roboto', sans-serif;
+                --font-secondary: 'Roboto Condensed', sans-serif;
+                --font-size-base: 1rem;
+                /* 16px */
+                --font-size-sm: 0.875rem;
+                /* 14px */
+                --font-size-lg: 1.125rem;
+                /* 18px */
+                --font-size-xl: 1.25rem;
+                /* 20px */
+                --font-size-h3: 1.5rem;
+                /* 24px */
+                --font-size-h2: 2.25rem;
+                /* 36px */
+                --font-size-h1: 3rem;
+                /* 48px */
+                /* Spacing & Sizing */
+                --spacing-xs: 0.5rem;
+                --spacing-sm: 1rem;
+                --spacing-md: 1.5rem;
+                --spacing-lg: 2.5rem;
+                --spacing-xl: 4rem;
+                --container-width: 1300px;
+                --header-height: 80px;
+                --max-width: 1100px;
+                --radius: 12px;
+                --gap: 20px
+                    /* Effects */
+                    --border-radius: 0.5rem;
+                --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+                --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+                --transition: all 0.3s ease-in-out;
+            }
+
+            /* ========================================================================
+         3. Layout & Utility Classes
+         ======================================================================== */
+            .services-container {
+                width: 100%;
+                max-width: var(--container-width);
+                margin-left: auto;
+                margin-right: auto;
+                padding-left: var(--spacing-sm);
+                padding-right: var(--spacing-sm);
+            }
+
+            .section {
+                padding-top: var(--spacing-xl);
+                padding-bottom: var(--spacing-xl);
+            }
+
+            .section--secondary {
+                background-color: color-mix(in srgb, var(--background-color), var(--surface-color) 40%);
+            }
+
+            .section__header {
+                text-align: center;
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .section__title {
+                position: relative;
+                display: inline-block;
+                padding-bottom: var(--spacing-xs);
+            }
+
+            .section__title::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100px;
+                height: 4px;
+                background-color: #fec522;
+            }
+
+            .section__title--left::after {
+                left: 0;
+                transform: translateX(0);
+            }
+
+            .section__title--right::after {
+                right: 0;
+                transform: translateX(0);
+            }
+
+            .grid {
+                display: grid;
+                gap: var(--spacing-md);
+            }
+
+            .grid--2-cols {
+                grid-template-columns: 1fr;
+            }
+
+            @media (min-width: 768px) {
+                .grid--2-cols {
+                    grid-template-columns: 1fr 1fr;
+                    align-items: center;
+                }
+            }
+
+            .grid--3-cols {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+
+            .grid--4-cols {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            @media (min-width: 768px) {
+                .grid--4-cols {
+                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                }
+            }
+
+            /* Featured Content Section */
+            .feature-content__img {
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow-lg);
+                max-height: 600px;
+                width: 100%;
+            }
+
+            /* Feature Sections (Image & Text blocks) */
+            .feature-section {
+                padding: 5rem 0;
+            }
+
+            .hse-commitment {
+                background-color: var(--color-primary-dark);
+                color: var(--color-text-light);
+            }
+
+            .turnkey-projects {
+                background-color: white;
+            }
+
+            .feature-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                align-items: center;
+            }
+
+            @media (min-width: 768px) {
+                .feature-container {
+                    grid-template-columns: 1fr 1fr;
+                }
+
+                /* Reorder image to be first on desktop for this specific section */
+                .turnkey-projects .feature-image {
+                    order: -1;
+                }
+            }
+
+            .feature-content p {
+                margin: 1.5rem 0;
+                color: #d1d5db;
+            }
+
+            .turnkey-projects .feature-content p {
+                color: var(--color-text-muted);
+            }
+
+            .feature-image img {
+                width: 100%;
+                max-height: 600px;
+                display: block;
+                border-radius: 0.5rem;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            }
+
+            .feature-list {
+                list-style: none;
+                padding: 0;
+                margin-top: 1.5rem;
+            }
+
+            .feature-list li {
+                padding-left: 2rem;
+                position: relative;
+                margin-bottom: 0.75rem;
+            }
+
+            .feature-list li::before {
+                content: '✔';
+                position: absolute;
+                left: 0;
+                color: #fec522;
+                font-weight: bold;
+            }
+
+            .core-container {
+                max-width: var(--max-width);
+                margin: 0 auto;
+                padding: 60px 20px
+            }
+
+            .cta-btn {
+                background: var(--accent-color);
+                color: #1a1a1a;
+                padding: 12px 22px;
+                border-radius: 8px;
+                border: none;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background .3s ease, transform .2s ease
+            }
+
+            .cta-btn:hover {
+                background: #ffd43b;
+                transform: translateY(-2px)
+            }
+
+            .cards {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 24px;
+                margin-top: 32px
+            }
+
+            .card {
+                background: var(--surface-color);
+                padding: 32px;
+                border-radius: 12px;
+                transition: transform .3s ease, box-shadow .3s ease;
+                position: relative;
+                overflow: hidden
+            }
+
+            .card::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg, rgba(254, 197, 34, 0.08), rgba(255, 255, 255, 0.02));
+                opacity: 0;
+                transition: opacity .3s ease
+            }
+
+            .card:hover::before {
+                opacity: 1
+            }
+
+            .card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45)
+            }
+
+            .card-icon {
+                font-size: 46px;
+                color: var(--accent-color);
+                margin-bottom: 16px
+            }
+
+            .card h3 {
+                margin-bottom: 12px;
+                font-size: 20px;
+                color: var(--heading-color)
+            }
+
+            .card p {
+                color: rgba(255, 255, 255, 0.85)
+            }
+
+            @media(max-width:768px) {
+                .core-container {
+                    padding: 40px 20px
+                }
+
+                .card {
+                    padding: 24px
+                }
+
+                .card h3 {
+                    font-size: 18px
+                }
+
+                .card-icon {
+                    font-size: 40px
+                }
+            }
+
+            .details-content {
+                padding: 80px 0;
+            }
+
+            .content-container {
+                max-width: 900px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .content-container h1 {
+                font-size: 48px;
+                font-weight: 800;
+                margin-bottom: 20px;
+                color: var(--heading-color);
+            }
+
+            .content-container h2 {
+                font-size: 32px;
+                font-weight: 700;
+                margin-top: 40px;
+                margin-bottom: 20px;
+                border-left: 4px solid var(--accent-color);
+                padding-left: 15px;
+            }
+
+            .content-container p {
+                line-height: 1.7;
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .content-container p.intro {
+                font-size: 18px;
+                font-weight: 400;
+                color: #ccc;
+                /* Slightly lighter for contrast */
+            }
+
+            /* Offerings Grid */
+            .offerings-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+                margin-top: 40px;
+            }
+
+            .offering-card {
+                background-color: var(--surface-color);
+                padding: 30px;
+                border-radius: 8px;
+                border-top: 3px solid var(--accent-color);
+            }
+
+            .offering-card h3 {
+                font-size: 20px;
+                margin-top: 0;
+                color: var(--heading-color);
+            }
+
+            .offering-card p {
+                font-size: 15px;
+                color: #ccc;
+            }
+        </style>
+    </head>
+
+    <body class="service-details-page">
+        <header id="header" class="header d-flex align-items-center fixed-top">
+            <div class="container-fluid container-xl position-relative d-flex align-items-center">
+                <a href="/index.html" class="logo d-flex align-items-center me-auto">
+                    <img src="/assets/imgs/general/logo/header_logo.png" alt="CEMEX Logo" />
+                </a>
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li class="dropdown">
+                            <a href="/services.html" class="active">
+                                <span>Services</span>
+                                <i class="bi bi-chevron-down toggle-dropdown"></i>
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="/html/services/power_solutions.html"> Power Solutions </a>
+                                </li>
+                                <li>
+                                    <a href="/html/services/marine_services.html"> Marine Services </a>
+                                </li>
+                                <li>
+                                    <a href="/html/services/catering_solutions.html"> Catering Solutions </a>
+                                </li>
+                                <li>
+                                    <a href="/html/services/construction_services.html"> Construction Services </a>
+                                </li>
+                                <li>
+                                    <a href="/html/services/facility_services.html"> Facility Management </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
+                <a class="btn-getstarted d-none d-sm-block" href="/quote.html"> Request Quote </a>
+            </div>
+        </header>
+        <main class="main">
+            <div class="page-title dark-background" data-aos="fade" style="background-image: url(/assets/imgs/background/power_3.jpg)">
+                <div class="container position-relative">
+                    <h1>Power Solutions</h1>
+                    <p> We deliver tailored and fully managed power solutions, from renewable energy projects to Independent Power Producer (IPP) plants, ensuring reliable and uninterrupted energy for diverse clients. </p>
+                    <nav class="breadcrumbs">
+                        <ol>
+                            <li><a href="/index.html">Home</a></li>
+                            <li><a href="/services.html">Services</a></li>
+                            <li class="current">Power Solutions</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- Starter Section Section -->
+            <section id="starter-section" class="starter-section section">
+                <!-- Section Title -->
+                <div class="container section-title" data-aos="fade-up">
+                    <h2>Starter Section</h2>
+                    <p> Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit </p>
+                </div>
+                <!-- End Section Title -->
+                <div class="container" data-aos="fade-up">
+                    <p>Use this page as a starter for your own custom pages.</p>
+                </div>
+            </section>
+            <!-- /Starter Section Section -->
+            <section class="section">
+                <div class="services-container">
+                    <div class="grid grid--2-cols">
+                        <div class="fade-in feature-content__img--order-first">
+                            <img src="/assets/imgs/v1/energy-management.jpg" alt="Image representing company's vision" class="feature-content__img" />
+                        </div>
+                        <div class="feature-content fade-in" style="transition-delay: 0.2s">
+                            <h2 class="section__title section__title--left"> Fully Managed Power Solutions </h2>
+                            <p> At CEMEX Project Power Solutions, we deliver reliable, efficient, and fully managed power solutions tailored to the precise needs of industries, businesses, and communities. Our mission is to provide an uninterrupted energy supply that empowers our clients to operate with confidence and achieve continuous growth. </p>
+                            <p> From initial design and development to long-term operation, we manage every aspect of power generation and distribution. We specialize in creating consistent, scalable, and high-quality energy systems built on a foundation of reliability, efficiency, and end-to-end execution. Our Independent Power Producer (IPP) model guarantees cost-efficient energy with zero capital outlay for our clients. We assume full responsibility for asset provision, skilled operations, comprehensive maintenance, and fuel management, allowing you to focus on your core business while we ensure a dependable power supply. </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="core-container" id="offerings">
+                <h2>Core Offerings</h2>
+                <p> Our power solutions portfolio is built on a foundation of innovation, dependability, and measurable results. We deliver tailored, future-ready systems designed to ensure continuous operations, optimal efficiency, and sustainable growth for our clients. </p>
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>Renewable & Hybrid Energy Systems</h3>
+                        <p> We design, build, and operate integrated solar, gas, diesel, and hybrid facilities engineered for maximum reliability and efficiency. Each system is optimized to reduce emissions while maintaining consistent output. </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>Energy Infrastructure Development</h3>
+                        <p> From permits to commissioning, our experts manage the entire development lifecycle of energy projects. We ensure compliance, safety, and quality—delivering ready-to-operate facilities on schedule and within scope. </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>Independent Power Production (IPP)</h3>
+                        <p> We operate Independent Power Producer plants under long-term agreements, providing guaranteed power delivery and operational excellence for industrial and commercial enterprises. </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>Net Metering & Smart Billing</h3>
+                        <p> Our advanced metering systems empower clients with transparent, data-driven insights into consumption and cost performance—maximizing control and financial predictability. </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>Energy Strategy & Optimization</h3>
+                        <p> Through detailed audits and analytical modeling, we identify efficiency gaps and create strategies that align energy management with long-term business objectives and sustainability goals. </p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon"></div>
+                        <h3>Turnkey Power Partnerships</h3>
+                        <p> We provide end-to-end partnership models—from project financing and deployment to ongoing management—allowing clients to focus on core operations while we ensure seamless power continuity. </p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 50px">
+                    <button class="cta-btn">Schedule a Consultation</button>
+                </div>
+            </section>
+            <section class="details-content dark-background">
+                <div class="content-container">
+                    <h1>Uninterrupted Power for Unstoppable Progress</h1>
+                    <p class="intro"> At CEMEX Project Power Solutions, we deliver more than just electricity; we provide the certainty your business needs to thrive. We specialize in designing, developing, and operating bespoke power generation and distribution facilities that guarantee a reliable, efficient, and scalable energy supply. Whether for complex industrial operations, commercial hubs, or entire communities, our mission is to eliminate power interruptions, empowering you to operate with confidence and fuel continuous growth. </p>
+                    <h2>Fully-Managed Energy Solutions, Zero Capital Outlay</h2>
+                    <p> Move beyond strategy with our end-to-end managed power services. We leverage deep industry expertise to deliver energy systems built for peak performance and dependability. As an Independent Power Producer (IPP), we take full responsibility for your energy needs, offering guaranteed uptime and cost-efficient power through our flexible, usage-based billing models. </p>
+                    <p> With services covering everything from asset provision (high-performance generators and solar arrays) to skilled operations and preventative maintenance, you can forget about the complexities of power management. We handle it all, so you can focus on what you do best: running your core business. </p>
+                    <h2>Our Core Power Offerings</h2>
+                    <div class="offerings-grid">
+                        <div class="offering-card">
+                            <h3>Independent Power Producer (IPP)</h3>
+                            <p> We operate state-of-the-art Gas, Diesel, Solar, and Hybrid power plants to deliver uninterrupted, high-quality electricity to malls, residential estates, industrial parks, and other large-scale clients. </p>
+                        </div>
+                        <div class="offering-card">
+                            <h3>Renewable Energy Solutions</h3>
+                            <p> We are committed to a sustainable future. Our team designs, builds, and operates utility-scale Solar, Gas, and Hybrid power plants that produce clean, reliable energy for the grid or for direct client consumption. </p>
+                        </div>
+                        <div class="offering-card">
+                            <h3>Complete Project Development</h3>
+                            <p> From initial concept to final commissioning, we manage every aspect of your energy project. This includes securing all necessary permits and licenses, managing infrastructure development, and ensuring seamless project execution. </p>
+                        </div>
+                        <div class="offering-card">
+                            <h3>On-Site Net Metering</h3>
+                            <p> Take control of your energy consumption with our on-site system installations. You are billed only for your net energy usage, creating opportunities for significant cost savings and greater efficiency. </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer id="footer" class="footer dark-background">
+            <div class="container">
+                <div class="row gy-5">
+                    <div class="col-lg-4">
+                        <div class="footer-brand">
+                            <a href="/index.html" class="logo d-flex align-items-center mb-3">
+                                <span class="sitename">CEMEX Project Integrated LTD</span>
+                            </a>
+                            <p class="tagline"> Engineering The Integrated Infrastructure Of Tomorrow. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="footer-links-grid">
+                            <div class="row">
+                                <div class="col-6 col-md-6">
+                                    <h5>Services</h5>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <a href="/html/services/power_solutions.html"> Power Solutions </a>
+                                        </li>
+                                        <li>
+                                            <a href="/html/services/marine_services.html"> Marine Services </a>
+                                        </li>
+                                        <li>
+                                            <a href="/html/services/catering_solutions.html"> Catering Solutions </a>
+                                        </li>
+                                        <li>
+                                            <a href="/html/services/construction_services.html"> Construction Services </a>
+                                        </li>
+                                        <li>
+                                            <a href="/html/services/facility_services.html"> Facility Management </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 col-md-6">
+                                    <h5>Company</h5>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/about.html">About Us</a></li>
+                                        <li><a href="/contact.html">Contact Us</a></li>
+                                        <li><a href="/quote.html">Quotes</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="footer-cta">
+                            <h5>Let's Connect</h5>
+                            <a href="/contact.html" class="btn btn-outline">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="footer-bottom-content">
+                                <p class="mb-0"> © <span class="sitename">CEMEX Project Integrated LTD</span> . All rights reserved. </p>
+                                <div class="credits"> Designed by <a href="https://www.linkedin.com/in/joshua-trevor-stevenson/"> Nexora Web Agency </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+            <i class="bi bi-arrow-up-short"></i>
+        </a>
+        <div id="preloader"></div>
+        <script src="/src/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/src/vendor/aos/aos.js"></script>
+        <script src="/src/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="/src/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="/src/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="/src/js/main.js"></script>
+    </body>
+
+</html>
