@@ -17,7 +17,8 @@
     --default-color: #ffffff;
     --heading-color: #ffffff;
     --surface-color: #252525;
-    /* --contrast-color: #ffffff;
+    --contrast-color: #ffffff;
+     /* --contrast-color: #ffffff;
     --background-color: #ffffff; 
     --default-color: #342c26; 
     --heading-color: #2c1607; 
@@ -342,6 +343,10 @@ h6 {
 
 /* Navmenu - Mobile */
 @media (max-width: 1199px) {
+       .navmenu .active i .toggle-dropdown {
+        background-color: var(--accent-color);
+        color: var(--contrast-color);
+    }
     .mobile-nav-toggle {
         color: var(--nav-color);
         font-size: 28px;
