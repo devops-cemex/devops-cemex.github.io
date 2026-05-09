@@ -4,8 +4,8 @@
     <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Solar Panels — CEMEX Project Integrated</title>
-        <meta name="description" content="Complete solar energy bundles for homes and businesses in Nigeria — fully installed lithium battery systems from ₦2.19M. Pay 10–30% deposit, spread the balance over 12–36 months." />
+        <title>Solar Energy Systems — CEMEX Project Integrated</title>
+        <meta name="description" content="Complete solar energy systems for homes and businesses in Nigeria — fully installed lithium battery bundles from ₦2.19M. Flexible financing: 10–30% deposit, balance over 12–36 months." />
         <meta name="keywords" content="Solar Panels Nigeria, Home Solar, Solar Inverter, Lithium Battery, Solar Financing, CEMEX" />
         <link href="/assets/imgs/general/logo/logo_no-bg.png" rel="icon" />
         <link href="/assets/imgs/general/logo/cemex-logo.jpg" rel="apple-touch-icon" />
@@ -20,6 +20,488 @@
         <link href="/src/css/main.css" rel="stylesheet" />
         <link href="/src/css/services.css" rel="stylesheet" />
         <link href="/src/css/services_v2.css" rel="stylesheet" />
+        <style>
+            /* ── Solar pricing wrap ── */
+            .sol-pricing-wrap {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            /* ── Stats bar ── */
+            .sol-stats {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+                margin-bottom: 40px;
+            }
+
+            .sol-stat {
+                background: #1a1a1a;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                border-radius: 12px;
+                padding: 20px 24px;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                min-width: 0;
+            }
+
+            .sol-stat__icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 10px;
+                background: rgba(254, 197, 34, 0.12);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+
+            .sol-stat__icon i { font-size: 22px; color: #fec522; }
+            .sol-stat__text { min-width: 0; }
+
+            .sol-stat__label {
+                font-size: 0.72rem;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: rgba(255, 255, 255, 0.45);
+                margin-bottom: 3px;
+            }
+
+            .sol-stat__value {
+                font-family: 'Poppins', sans-serif;
+                font-size: 1.05rem;
+                font-weight: 600;
+                color: #fff;
+                white-space: nowrap;
+            }
+
+            /* ── Category tabs: scrollable row ── */
+            .sol-tabs-row {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .sol-tabs-row .cat-tabs {
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+                max-width: 100%;
+                margin: 0 0 40px;
+                padding: 0 0 6px;
+            }
+
+            .sol-tabs-row .cat-tabs::-webkit-scrollbar { display: none; }
+            .sol-tabs-row .cat-tab { flex-shrink: 0; }
+
+            /* ══════════════════════════════════════════════════
+               REDESIGNED bundle-grid & bundle-card (solar)
+            ══════════════════════════════════════════════════ */
+            .bundle-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 22px;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            /* Unified card structure */
+            .bundle-card {
+                position: relative;
+                background: #161616;
+                border-radius: 16px;
+                padding: 0;
+                border: 1px solid rgba(255, 255, 255, 0.07);
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                overflow: hidden;
+                opacity: 0;
+                transform: translateY(28px);
+                transition: opacity 0.6s ease, transform 0.6s ease,
+                            border-color 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .bundle-card.visible { opacity: 1; transform: translateY(0); }
+
+            .bundle-card:hover {
+                border-color: rgba(254, 197, 34, 0.3);
+                box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+                transform: translateY(-4px);
+            }
+
+            .bundle-card--featured {
+                border-color: rgba(254, 197, 34, 0.28);
+                background: linear-gradient(160deg, rgba(254, 197, 34, 0.07) 0%, #161616 45%);
+            }
+
+            .bundle-card--featured::after {
+                content: 'Popular';
+                position: absolute;
+                top: 14px;
+                right: 14px;
+                background: #fec522;
+                color: #111;
+                font-size: 0.68rem;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 4px 11px;
+                border-radius: 999px;
+                z-index: 1;
+            }
+
+            /* Header band */
+            .bundle-card__header {
+                padding: 22px 24px 18px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .bundle-card__tag {
+                font-size: 0.7rem;
+                font-weight: 700;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.45);
+                display: block;
+            }
+
+            .bundle-card__size {
+                font-family: 'Poppins', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #fec522;
+                line-height: 1;
+                margin-top: 4px;
+            }
+
+            .bundle-card__size span {
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: rgba(255, 255, 255, 0.5);
+                margin-left: 4px;
+                vertical-align: middle;
+            }
+
+            .bundle-card__name {
+                font-family: 'Raleway', sans-serif;
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: #fff;
+                margin-top: 6px;
+            }
+
+            /* Price block */
+            .bundle-card__price-block {
+                padding: 16px 24px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .bundle-card__price {
+                font-family: 'Poppins', sans-serif;
+                font-size: 1.45rem;
+                font-weight: 700;
+                color: #fff;
+                line-height: 1.1;
+            }
+
+            .bundle-card__price small {
+                display: block;
+                font-family: 'Roboto', sans-serif;
+                font-size: 0.72rem;
+                font-weight: 400;
+                color: rgba(255, 255, 255, 0.45);
+                margin-top: 4px;
+                letter-spacing: 0.03em;
+            }
+
+            /* Feature list */
+            .bundle-card__features {
+                list-style: none;
+                padding: 18px 24px;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 9px;
+                flex: 1;
+            }
+
+            .bundle-card__features li {
+                position: relative;
+                padding-left: 20px;
+                font-size: 0.875rem;
+                color: rgba(255, 255, 255, 0.78);
+                line-height: 1.5;
+            }
+
+            .bundle-card__features li::before {
+                content: '\2713';
+                position: absolute;
+                left: 0;
+                top: 0;
+                color: #fec522;
+                font-weight: 700;
+                font-size: 0.8rem;
+            }
+
+            /* Powers highlight row */
+            .bundle-card__features li.bundle-card__powers {
+                margin-top: 4px;
+                padding: 10px 10px 10px 36px;
+                background: rgba(254, 197, 34, 0.07);
+                border: 1px solid rgba(254, 197, 34, 0.16);
+                border-radius: 8px;
+                font-size: 0.8rem;
+                color: rgba(255, 255, 255, 0.75);
+                line-height: 1.55;
+            }
+
+            .bundle-card__features li.bundle-card__powers::before { display: none; }
+
+            .bundle-card__features li.bundle-card__powers .pow-icon {
+                position: absolute;
+                left: 12px;
+                top: 12px;
+                color: #fec522;
+                font-size: 0.85rem;
+            }
+
+            /* CTA button */
+            .bundle-card__cta {
+                margin: 0 24px 22px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                padding: 12px 20px;
+                border-radius: 9px;
+                background: #fec522;
+                color: #111;
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.88rem;
+                font-weight: 700;
+                text-decoration: none;
+                transition: background 0.2s, transform 0.2s;
+            }
+
+            .bundle-card__cta:hover { background: #ffd43b; color: #111; transform: translateY(-2px); }
+            .bundle-card__cta i { transition: transform 0.2s; }
+            .bundle-card__cta:hover i { transform: translateX(3px); }
+
+            /* ── Footer note strip — elevated ── */
+            .sol-footer {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 24px;
+                flex-wrap: wrap;
+                padding: 28px 36px;
+                background: #0d0d0d;
+                border: 1px solid rgba(254, 197, 34, 0.2);
+                border-left: 5px solid #fec522;
+                border-radius: 14px;
+                box-shadow: 0 4px 28px rgba(0, 0, 0, 0.4);
+            }
+
+            .sol-footer__note {
+                font-size: 0.88rem;
+                color: rgba(255, 255, 255, 0.75);
+                line-height: 1.8;
+                max-width: 860px;
+            }
+
+            .sol-footer__note strong { color: #fec522; font-weight: 700; }
+
+            /* ══════════════════════════════════════════════════
+               Financing CTA Banner (mirrors generators.html)
+            ══════════════════════════════════════════════════ */
+            .sol-financing {
+                padding: 80px 0;
+                background: linear-gradient(180deg, #060606 0%, #0a0a0a 100%);
+            }
+
+            .sol-financing__inner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+                background: #111111;
+                border: 1px solid rgba(254, 197, 34, 0.18);
+                border-radius: 20px;
+                padding: 56px 52px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .sol-financing__inner::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -10%;
+                width: 55%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(254, 197, 34, 0.07), transparent 65%);
+                pointer-events: none;
+            }
+
+            .sol-financing__title {
+                font-family: 'Raleway', sans-serif;
+                font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+                font-weight: 800;
+                color: #fff;
+                line-height: 1.05;
+                margin: 12px 0 16px;
+            }
+
+            .sol-financing__desc {
+                color: rgba(255, 255, 255, 0.72);
+                line-height: 1.75;
+                font-size: 0.97rem;
+                margin-bottom: 26px;
+            }
+
+            .sol-financing__badges {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-bottom: 30px;
+            }
+
+            .sol-financing__badges span {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: rgba(254, 197, 34, 0.1);
+                border: 1px solid rgba(254, 197, 34, 0.28);
+                color: #fec522;
+                font-size: 0.78rem;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                padding: 6px 14px;
+                border-radius: 999px;
+            }
+
+            .sol-financing__badges span i { font-size: 0.88rem; }
+
+            .sol-financing__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+            .sol-financing__btn-primary {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 13px 26px;
+                border-radius: 9px;
+                background: #fec522;
+                color: #111;
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.92rem;
+                font-weight: 700;
+                text-decoration: none;
+                transition: background 0.2s, transform 0.2s;
+            }
+
+            .sol-financing__btn-primary:hover { background: #ffd43b; color: #111; transform: translateY(-2px); }
+
+            .sol-financing__btn-ghost {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 13px 26px;
+                border-radius: 9px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: rgba(255, 255, 255, 0.85);
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.92rem;
+                font-weight: 600;
+                text-decoration: none;
+                background: transparent;
+                transition: border-color 0.2s, color 0.2s, transform 0.2s;
+            }
+
+            .sol-financing__btn-ghost:hover { border-color: rgba(254, 197, 34, 0.5); color: #fec522; transform: translateY(-2px); }
+
+            .sol-financing__plans { display: flex; flex-direction: column; gap: 14px; position: relative; }
+
+            .sol-financing__plan {
+                display: grid;
+                grid-template-columns: 80px 1fr;
+                grid-template-rows: auto auto;
+                column-gap: 22px;
+                align-items: center;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.07);
+                border-radius: 14px;
+                padding: 22px 26px;
+                transition: border-color 0.3s, background 0.3s;
+            }
+
+            .sol-financing__plan:hover { border-color: rgba(254, 197, 34, 0.3); background: rgba(254, 197, 34, 0.04); }
+            .sol-financing__plan--featured { border-color: rgba(254, 197, 34, 0.38); background: rgba(254, 197, 34, 0.05); }
+
+            .sol-financing__plan-tenor {
+                font-family: 'Poppins', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #fec522;
+                line-height: 1;
+                grid-row: 1 / 3;
+            }
+
+            .sol-financing__plan-tenor span {
+                display: block;
+                font-size: 0.65rem;
+                font-weight: 500;
+                color: rgba(255, 255, 255, 0.45);
+                margin-top: 3px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+
+            .sol-financing__plan-label {
+                font-size: 0.78rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 3px;
+            }
+
+            .sol-financing__plan p { font-size: 0.84rem; color: rgba(255, 255, 255, 0.52); line-height: 1.5; margin: 0; }
+
+            /* ── Responsive ── */
+            @media (max-width: 1024px) {
+                .bundle-grid { grid-template-columns: repeat(2, 1fr); }
+                .sol-stats { grid-template-columns: repeat(2, 1fr); }
+            }
+
+            @media (max-width: 860px) {
+                .sol-financing__inner { grid-template-columns: 1fr; gap: 40px; padding: 40px 36px; }
+            }
+
+            @media (max-width: 640px) {
+                .bundle-grid { grid-template-columns: 1fr; padding: 0 16px; }
+                .sol-stats { grid-template-columns: 1fr 1fr; }
+                .sol-footer { flex-direction: column; padding: 20px 22px; }
+                .sol-financing { padding: 60px 0; }
+                .sol-financing__inner { padding: 32px 24px; }
+                .sol-financing__actions { flex-direction: column; }
+                .sol-financing__btn-primary,
+                .sol-financing__btn-ghost { justify-content: center; }
+            }
+
+            @media (max-width: 400px) {
+                .sol-stats { grid-template-columns: 1fr; }
+                .sol-financing__inner { padding: 26px 18px; }
+                .sol-financing__plan { grid-template-columns: 66px 1fr; padding: 18px; }
+            }
+        </style>
     </head>
 
     <body class="service-details-page">
@@ -62,20 +544,22 @@
                 <a class="btn-getstarted d-none d-sm-block" href="/quote.html">Request Quote</a>
             </div>
         </header>
+
         <main class="main">
             <!-- Page Title -->
             <div class="page-title dark-background" data-aos="fade" style="background-image: url(/assets/imgs/services/solar_hero.jpg)">
                 <div class="container position-relative">
-                    <h1>Solar Panels</h1>
+                    <h1>Solar Energy Systems</h1>
                     <nav class="breadcrumbs">
                         <ol>
                             <li><a href="/index.html">Home</a></li>
-                            <li><a href="/services.html">Services</a></li>
-                            <li class="current">Solar Panels</li>
+                            <li><a href="/products.html">Products</a></li>
+                            <li class="current">Solar Energy Systems</li>
                         </ol>
                     </nav>
                 </div>
             </div>
+
             <!-- Intro Section -->
             <section class="fm-power" aria-labelledby="fm-power-title">
                 <div class="fm-power__inner" id="fmPower">
@@ -85,297 +569,427 @@
                     <div class="fm-power__content">
                         <div class="fm-power__heading">
                             <span class="fm-power__accent" aria-hidden="true"></span>
-                            <h2 id="fm-power-title" class="fm-power__h2">Quiet, Reliable Solar Power — Fully Installed.</h2>
+                            <h2 id="fm-power-title" class="fm-power__h2">Cut the Fuel Bill. Keep the Lights On.</h2>
                         </div>
-                        <p class="fm-power__lead"> Stop running the generator. Stop chasing fuel. CEMEX delivers complete solar energy bundles — panels, lithium battery, hybrid inverter, wiring, protection, and full installation — starting from ₦2.19M. </p>
+                        <p class="fm-power__lead">
+                            CEMEX delivers complete solar energy systems — panels, lithium battery, hybrid inverter, wiring, surge protection, and full installation — starting from ₦2.19M. One call. One team. Zero generator dependency.
+                        </p>
                         <div class="fm-power__body">
-                            <p> Choose a ready-made Energy Bundle or a customisable System Plan sized to your exact needs. Pay a deposit from 10% and spread the balance over 12–36 months. Delivery within 5–10 days of payment confirmation. </p>
+                            <p>
+                                Choose a ready-made <strong>Energy Bundle</strong> for a fixed, fully-installed price, or a <strong>System Plan</strong> sized to your exact load after a site assessment. Pay a deposit from as low as 10% and spread the balance over 12–36 months. Delivery and installation within 5–10 working days of payment confirmation. <strong>All prices are subject to change without prior notice.</strong>
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- Solar Plans & Bundles — Combined -->
+
+            <!-- Solar Packages & Pricing -->
             <section class="svc-subsection svc-subsection--alt" id="plans">
                 <div class="svc-subsection__header">
                     <span class="svc-subsection__eyebrow">Packages &amp; Pricing</span>
-                    <h2 class="svc-subsection__title">Find Your Solar Package</h2>
-                    <p class="svc-subsection__lead"> Choose a ready-made Energy Bundle — fully specified and installed — or browse our customisable System Plans sized to your exact load.  </p>
+                    <h2 class="svc-subsection__title">Solar Packages for Every Load</h2>
+                    <p class="svc-subsection__lead">
+                        Choose a ready-made Energy Bundle — fully specified and installed — or browse our customisable System Plans sized to your exact load.
+                    </p>
                 </div>
+
+                
+
                 <!-- Category tabs -->
-                <div class="cat-tabs" role="tablist" aria-label="Solar package categories" data-solar-tabs>
-                    <button type="button" class="cat-tab is-active" role="tab" aria-selected="true" data-filter="all">
-                        <i class="bi bi-grid-fill"></i><span>All</span>
-                    </button>
-                    <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="bundle">
-                        <i class="bi bi-box-seam-fill"></i><span>Energy Bundles</span>
-                    </button>
-                    <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="plan">
-                        <i class="bi bi-sliders"></i><span>System Plans</span>
-                    </button>
+                <div class="sol-tabs-row">
+                    <div class="cat-tabs" role="tablist" aria-label="Solar package categories" data-solar-tabs>
+                        <button type="button" class="cat-tab is-active" role="tab" aria-selected="true" data-filter="all">
+                            <i class="bi bi-grid-fill"></i><span>All Packages</span>
+                        </button>
+                        <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="bundle">
+                            <i class="bi bi-box-seam-fill"></i><span>Energy Bundles</span>
+                        </button>
+                        <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="plan">
+                            <i class="bi bi-sliders"></i><span>System Plans</span>
+                        </button>
+                        <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="entry">
+                            <i class="bi bi-house-fill"></i><span>Entry Level</span>
+                        </button>
+                        <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="mid">
+                            <i class="bi bi-building-fill"></i><span>Mid Range</span>
+                        </button>
+                        <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="high">
+                            <i class="bi bi-buildings-fill"></i><span>High Capacity</span>
+                        </button>
+                    </div>
                 </div>
+
                 <!-- Unified card grid -->
                 <div class="bundle-grid" data-solar-grid>
-                    <!-- Energy Bundle: Max Energy 1.0 -->
-                    <article class="bundle-card bundle-card--featured" data-category="bundle">
-                        <span class="bundle-card__tag">Standard Package · Energy Bundle</span>
-                        <div class="bundle-card__size">10<span>KVA</span></div>
-                        <div class="bundle-card__price">₦11,357,500<small>Fully installed &amp; delivered · Incl. 10% markup</small></div>
+
+                    <!-- ═══ ENERGY BUNDLES ═══ -->
+
+                    <!-- Max Energy Bundle 1.0 · 10 KVA · High Capacity Bundle -->
+                    <article class="bundle-card bundle-card--featured" data-category="bundle high">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">Energy Bundle · Standard Package</span>
+                            <div class="bundle-card__size">10<span>KVA</span></div>
+                            <div class="bundle-card__name">Max Energy Bundle 1.0</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦11,357,500<small>Fully installed &amp; delivered </small></div>
+                        </div>
                         <ul class="bundle-card__features">
-                            <li><strong>Max Energy Bundle 1.0</strong></li>
                             <li>10KVA, 48V SRNE Inverter with 200A MPPT</li>
                             <li>2 × 10KWH, 51.2V Blue Carbon Lithium Battery</li>
                             <li>12 × 620Wp Solar Panels</li>
                             <li>Accessories, Logistics &amp; EPC included</li>
-                            <li>Powers: 4 fans, 3 ACs, 2 fridges, pump, lighting</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Powers: 4 fans, 3 ACs, 2 fridges, pump &amp; lighting</li>
                             <li>Deposit: Pay 10% | Balance over 12–36 months</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?bundle=max-energy-1-0">
-                            <span>Get a Quote</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- Energy Bundle: Lite Energy 2.0 -->
-                    <article class="bundle-card" data-category="bundle">
-                        <span class="bundle-card__tag">Starter Package · Energy Bundle</span>
-                        <div class="bundle-card__size">5<span>KVA</span></div>
-                        <div class="bundle-card__price">₦5,348,200<small>Fully installed &amp; delivered · Incl. 10% markup</small></div>
+
+                    <!-- Lite Energy Bundle 2.0 · 5 KVA · Mid Bundle -->
+                    <article class="bundle-card" data-category="bundle mid">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">Energy Bundle · Starter Package</span>
+                            <div class="bundle-card__size">5<span>KVA</span></div>
+                            <div class="bundle-card__name">Lite Energy Bundle 2.0</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦5,348,200<small>Fully installed &amp; delivered </small></div>
+                        </div>
                         <ul class="bundle-card__features">
-                            <li><strong>Lite Energy Bundle 2.0</strong></li>
                             <li>5KW, 48V SRNE Hybrid Inverter</li>
                             <li>10KWH, 51.2V Blue Carbon Lithium Battery</li>
                             <li>6 × 610W Jinko Half-Cell Solar Panels</li>
                             <li>Accessories, Logistics &amp; EPC included</li>
-                            <li>Powers: 2 TVs, 3 fans, 1 AC, fridge/freezer, pump</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Powers: 2 TVs, 3 fans, 1 AC, fridge/freezer &amp; pump</li>
                             <li>Deposit: Pay 10% | Balance over 12–36 months</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?bundle=lite-energy-2-0">
-                            <span>Get a Quote</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- Energy Bundle: Basic Energy 2.0 -->
-                    <article class="bundle-card" data-category="bundle">
-                        <span class="bundle-card__tag">Starter Package · Energy Bundle</span>
-                        <div class="bundle-card__size">2.5<span>KVA</span></div>
-                        <div class="bundle-card__price">₦2,636,040<small>Fully installed &amp; delivered · Incl. 10% markup</small></div>
+
+                    <!-- Basic Energy Bundle 2.0 · 2.5 KVA · Entry Bundle -->
+                    <article class="bundle-card" data-category="bundle entry">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">Energy Bundle · Starter Package</span>
+                            <div class="bundle-card__size">2.5<span>KVA</span></div>
+                            <div class="bundle-card__name">Basic Energy Bundle 2.0</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦2,636,040<small>Fully installed &amp; delivered </small></div>
+                        </div>
                         <ul class="bundle-card__features">
-                            <li><strong>Basic Energy Bundle 2.0</strong></li>
                             <li>2.5KW, 24V Famicare Hybrid Inverter</li>
                             <li>5KWH, 24V Blue Carbon Lithium Battery</li>
                             <li>4 × 400Wp Solar Panels</li>
                             <li>Accessories, Logistics &amp; EPC included</li>
-                            <li>Powers: LED TV, fan, fridge/freezer, washing machine</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Powers: LED TV, fan, fridge/freezer &amp; washing machine</li>
                             <li>Deposit: Pay 30% | Balance over 12–36 months</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?bundle=basic-energy-2-0">
-                            <span>Get a Quote</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- Energy Bundle: Lite Energy 1.0 -->
-                    <article class="bundle-card" data-category="bundle">
-                        <span class="bundle-card__tag">Backup Package · Energy Bundle</span>
-                        <div class="bundle-card__size">3<span>KVA</span></div>
-                        <div class="bundle-card__price">₦2,193,620<small>Fully installed &amp; delivered · Incl. 10% markup</small></div>
+
+                    <!-- Lite Energy Bundle 1.0 · 3 KVA · Entry Bundle (Backup) -->
+                    <article class="bundle-card" data-category="bundle entry">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">Energy Bundle · Backup Package</span>
+                            <div class="bundle-card__size">3<span>KVA</span></div>
+                            <div class="bundle-card__name">Lite Energy Bundle 1.0</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦2,193,620<small>Fully installed &amp; delivered </small></div>
+                        </div>
                         <ul class="bundle-card__features">
-                            <li><strong>Lite Energy Bundle 1.0</strong></li>
                             <li>3KW, 24V Famicare Inverter with 1,500W MPPT</li>
                             <li>5KWH, 24V Blue Carbon Lithium Battery</li>
-                            <li>No panels — backup / inverter-only system</li>
+                            <li>No panels — inverter + battery backup system</li>
                             <li>Accessories, Logistics &amp; EPC included</li>
-                            <li>Powers: LED TV, fan, fridge/freezer, pumping machine</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Powers: LED TV, fan, fridge/freezer &amp; pump</li>
                             <li>Deposit: Pay 30% | Balance over 12–36 months</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?bundle=lite-energy-1-0">
-                            <span>Get a Quote</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Starter -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">Entry Level · System Plan</span>
-                        <div class="bundle-card__size">Starter<span style="font-size:0.8rem;display:block;margin-top:2px;">4KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦1,782,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- ═══ SYSTEM PLANS ═══ -->
+
+                    <!-- Starter · 4KVA · Entry Plan -->
+                    <article class="bundle-card" data-category="plan entry">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · Entry Level</span>
+                            <div class="bundle-card__size">4<span>KVA</span></div>
+                            <div class="bundle-card__name">Starter</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦1,782,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>4KVA Hybrid Inverter</li>
                             <li>2.5KWH Lithium Battery</li>
                             <li>2 × 600W Solar Panels</li>
-                            <li>Best for: 6–10 LED bulbs, 2–3 fans, 1 TV, 1 fridge</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: 6–10 LED bulbs, 2–3 fans, 1 TV, 1 fridge</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=starter">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Starter Plus -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">Entry Level · System Plan</span>
-                        <div class="bundle-card__size">Starter Plus<span style="font-size:0.8rem;display:block;margin-top:2px;">4KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦3,135,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Starter Plus · 4KVA · Entry Plan -->
+                    <article class="bundle-card" data-category="plan entry">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · Entry Level</span>
+                            <div class="bundle-card__size">4<span>KVA</span></div>
+                            <div class="bundle-card__name">Starter Plus</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦3,135,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>4KVA Hybrid Inverter</li>
                             <li>7.5KWH Lithium Battery</li>
                             <li>5 × 600W Solar Panels</li>
-                            <li>Best for: Starter + 1 freezer &amp; more uptime</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: Starter appliances + 1 freezer &amp; more uptime</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=starter-plus">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Family -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">Mid Range · System Plan</span>
-                        <div class="bundle-card__size">Family<span style="font-size:0.8rem;display:block;margin-top:2px;">6KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦2,783,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Family · 6KVA · Mid Plan -->
+                    <article class="bundle-card" data-category="plan mid">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · Mid Range</span>
+                            <div class="bundle-card__size">6<span>KVA</span></div>
+                            <div class="bundle-card__name">Family</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦2,783,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>6KVA Hybrid Inverter</li>
                             <li>5KWH Lithium Battery</li>
                             <li>3 × 600W Solar Panels</li>
-                            <li>Best for: 2 inverter ACs, fridge, freezer, washer, microwave</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: 2 inverter ACs, fridge, freezer, washer, microwave</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=family">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Family Plus -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">Mid Range · System Plan</span>
-                        <div class="bundle-card__size">Family Plus<span style="font-size:0.8rem;display:block;margin-top:2px;">6KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦4,191,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Family Plus · 6KVA · Mid Plan -->
+                    <article class="bundle-card" data-category="plan mid">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · Mid Range</span>
+                            <div class="bundle-card__size">6<span>KVA</span></div>
+                            <div class="bundle-card__name">Family Plus</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦4,191,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>6KVA Hybrid Inverter</li>
                             <li>10KWH Lithium Battery</li>
                             <li>Panels: —</li>
-                            <li>Best for: Family plan + more uptime</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: Family plan appliances + extended uptime</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=family-plus">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Family Pro -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">Mid Range · System Plan</span>
-                        <div class="bundle-card__size">Family Pro<span style="font-size:0.8rem;display:block;margin-top:2px;">6KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦5,445,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Family Pro · 6KVA · Mid Plan -->
+                    <article class="bundle-card" data-category="plan mid">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · Mid Range</span>
+                            <div class="bundle-card__size">6<span>KVA</span></div>
+                            <div class="bundle-card__name">Family Pro</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦5,445,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>6KVA Hybrid Inverter</li>
                             <li>15KWH Lithium Battery</li>
                             <li>10 × 600W Solar Panels</li>
-                            <li>Best for: Family Plus + more uptime</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: Family Plus appliances + more uptime</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=family-pro">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Prime -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">High Capacity · System Plan</span>
-                        <div class="bundle-card__size">Prime<span style="font-size:0.8rem;display:block;margin-top:2px;">6KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦6,215,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Prime · 6KVA · High Plan -->
+                    <article class="bundle-card" data-category="plan high">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · High Capacity</span>
+                            <div class="bundle-card__size">6<span>KVA</span></div>
+                            <div class="bundle-card__name">Prime</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦6,215,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>6KVA Hybrid Inverter</li>
                             <li>20KWH Lithium Battery</li>
                             <li>10 × 600W Solar Panels</li>
-                            <li>Best for: 4+ inverter ACs + Family Pro appliances</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: 4+ inverter ACs + full family appliance load</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=prime">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Executive -->
-                    <article class="bundle-card bundle-card--featured" data-category="plan">
-                        <span class="bundle-card__tag">High Capacity · System Plan</span>
-                        <div class="bundle-card__size">Executive<span style="font-size:0.8rem;display:block;margin-top:2px;">12KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦6,589,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Executive · 12KVA · High Plan (featured) -->
+                    <article class="bundle-card bundle-card--featured" data-category="plan high">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · High Capacity</span>
+                            <div class="bundle-card__size">12<span>KVA</span></div>
+                            <div class="bundle-card__name">Executive</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦6,589,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>12KVA Hybrid Inverter</li>
                             <li>15KWH Lithium Battery</li>
                             <li>12 × 600W Solar Panels</li>
-                            <li>Best for: Prime appliances + more uptime</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: Prime appliances + higher inverter headroom</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=executive">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Executive Plus -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">High Capacity · System Plan</span>
-                        <div class="bundle-card__size">Executive Plus<span style="font-size:0.8rem;display:block;margin-top:2px;">12KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦7,359,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Executive Plus · 12KVA · High Plan -->
+                    <article class="bundle-card" data-category="plan high">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · High Capacity</span>
+                            <div class="bundle-card__size">12<span>KVA</span></div>
+                            <div class="bundle-card__name">Executive Plus</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦7,359,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>12KVA Hybrid Inverter</li>
                             <li>20KWH Lithium Battery</li>
                             <li>12 × 600W Solar Panels</li>
-                            <li>Best for: Executive + more uptime</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: Executive appliances + more uptime</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=executive-plus">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Executive Pro -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">Premium · System Plan</span>
-                        <div class="bundle-card__size">Executive Pro<span style="font-size:0.8rem;display:block;margin-top:2px;">12KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦11,451,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Executive Pro · 12KVA · Premium Plan -->
+                    <article class="bundle-card" data-category="plan high">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · Premium</span>
+                            <div class="bundle-card__size">12<span>KVA</span></div>
+                            <div class="bundle-card__name">Executive Pro</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦11,451,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>12KVA Hybrid Inverter</li>
                             <li>30KWH Lithium Battery</li>
                             <li>Panels: —</li>
-                            <li>Best for: Executive Plus + more uptime</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: Executive Plus load + maximum overnight uptime</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=executive-pro">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
-                    <!-- System Plan: Signature -->
-                    <article class="bundle-card" data-category="plan">
-                        <span class="bundle-card__tag">Premium · System Plan</span>
-                        <div class="bundle-card__size">Signature<span style="font-size:0.8rem;display:block;margin-top:2px;">12KVA Hybrid</span></div>
-                        <div class="bundle-card__price">₦12,991,000<small>Inverter + battery + panels · Excl. installation</small></div>
+
+                    <!-- Signature · 12KVA · Premium Plan -->
+                    <article class="bundle-card" data-category="plan high">
+                        <div class="bundle-card__header">
+                            <span class="bundle-card__tag">System Plan · Premium</span>
+                            <div class="bundle-card__size">12<span>KVA</span></div>
+                            <div class="bundle-card__name">Signature</div>
+                        </div>
+                        <div class="bundle-card__price-block">
+                            <div class="bundle-card__price">₦12,991,000<small>Inverter + battery + panels · Excl. installation</small></div>
+                        </div>
                         <ul class="bundle-card__features">
                             <li>12KVA Hybrid Inverter</li>
                             <li>40KWH Lithium Battery</li>
                             <li>24 × 600W Solar Panels</li>
-                            <li>Best for: Executive Pro + more uptime</li>
-                            <li>Final quote after site inspection</li>
+                            <li class="bundle-card__powers"><i class="pow-icon bi bi-plug-fill"></i>Best for: Executive Pro load + industry-leading storage</li>
+                            <li>Final cost confirmed after site inspection</li>
                         </ul>
                         <a class="bundle-card__cta" href="/quote.html?service=solar&amp;plan=signature">
-                            <span>Book Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
+                            Get a Quote <i class="bi bi-arrow-right"></i>
                         </a>
                     </article>
+
                 </div><!-- /bundle-grid -->
-                <!-- Note strip -->
-                <div style="max-width:1200px;margin:32px auto 0;padding:0 16px;">
-                    <p style="font-size:0.81rem;color:rgba(255,255,255,0.45);line-height:1.7;">
-                        <strong style="color:rgba(255,255,255,0.68);">Note:</strong> Energy Bundle prices cover the full system including inverter, batteries, panels, accessories, logistics, and EPC. System Plan prices cover inverter, battery, panels, and voltage box only — a site inspection will determine the final cost for cables, accessories, logistics, and labour before a quotation is issued. All prices include the 10% retail markup. Payment terms: 12–36 months.
-                    </p>
-                    <div style="margin-top:1.5rem;">
-                        <a class="finance-callout__cta" href="/quote.html?service=solar">
-                            <span>Request a Site Assessment</span>
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
+
+               
+            </section>
+
+            <!-- Financing CTA Banner -->
+            <section class="sol-financing" id="financing">
+                <div class="sol-pricing-wrap">
+                    <div class="sol-financing__inner">
+                        <!-- Left: copy + CTAs -->
+                        <div class="sol-financing__lead">
+                            <span class="svc-subsection__eyebrow">Flexible Financing</span>
+                            <h2 class="sol-financing__title">Solar Today.<br>Pay Over Time.</h2>
+                            <p class="sol-financing__desc">
+                                Own a fully installed solar energy system with as little as 10% down. Spread the balance over 12, 24, or 36 months — available for homeowners, SMEs, and corporate clients. Every system is engineered, delivered, and commissioned by certified CEMEX technicians.
+                            </p>
+                            <div class="sol-financing__badges">
+                                <span><i class="bi bi-sun-fill"></i> Certified Installation</span>
+                                <span><i class="bi bi-battery-charging"></i> Lithium Battery Systems</span>
+                                <span><i class="bi bi-receipt"></i> From 10% Deposit</span>
+                            </div>
+                            <div class="sol-financing__actions">
+                                <a class="sol-financing__btn-primary" href="/quote.html?service=solar">
+                                    Request a Quote <i class="bi bi-arrow-right"></i>
+                                </a>
+                                <a class="sol-financing__btn-ghost" href="/contact.html">Talk to Us</a>
+                            </div>
+                        </div>
+                        <!-- Right: plan cards -->
+                        <div class="sol-financing__plans">
+                            <div class="sol-financing__plan">
+                                <div class="sol-financing__plan-tenor">12<span>months</span></div>
+                                <div class="sol-financing__plan-label">Short-Term</div>
+                                <p>Ideal for clients with a higher initial deposit who want to clear the balance quickly.</p>
+                            </div>
+                            <div class="sol-financing__plan sol-financing__plan--featured">
+                                <div class="sol-financing__plan-tenor">24<span>months</span></div>
+                                <div class="sol-financing__plan-label">Standard</div>
+                                <p>The most popular choice for homeowners and small-to-medium businesses.</p>
+                            </div>
+                            <div class="sol-financing__plan">
+                                <div class="sol-financing__plan-tenor">36<span>months</span></div>
+                                <div class="sol-financing__plan-label">Extended</div>
+                                <p>Best suited to larger systems and corporate clients managing cash flow across projects.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
+
         </main>
+
         <footer id="footer" class="footer dark-background">
             <div class="footer-top">
                 <div class="container">
@@ -447,6 +1061,7 @@
                 </div>
             </div>
         </footer>
+
         <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
             <i class="bi bi-arrow-up-short"></i>
         </a>
@@ -485,8 +1100,10 @@
         <script src="/src/js/services_v2.js"></script>
         <script>
             // Category filter tabs — solar
+            // data-category uses space-separated tokens: e.g. "bundle high", "plan mid", "plan entry"
             const solarTabs = document.querySelectorAll('[data-solar-tabs] .cat-tab');
             const solarCards = document.querySelectorAll('[data-solar-grid] .bundle-card');
+
             solarTabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     solarTabs.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
@@ -494,10 +1111,16 @@
                     tab.setAttribute('aria-selected', 'true');
                     const filter = tab.dataset.filter;
                     solarCards.forEach(card => {
-                        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+                        if (filter === 'all') {
+                            card.style.display = '';
+                        } else {
+                            const cats = (card.dataset.category || '').split(' ');
+                            card.style.display = cats.includes(filter) ? '' : 'none';
+                        }
                     });
                 });
             });
+
             // Reveal animation for bundle-cards
             const solarBundleObs = new IntersectionObserver((entries) => {
                 entries.forEach((e, i) => {

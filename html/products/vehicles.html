@@ -20,6 +20,188 @@
         <link href="/src/css/main.css" rel="stylesheet" />
         <link href="/src/css/services.css" rel="stylesheet" />
         <link href="/src/css/services_v2.css" rel="stylesheet" />
+        <style>
+            /* ══════════════════════════════════════════════════
+               Vehicle Financing CTA Banner (mirrors generators.html)
+            ══════════════════════════════════════════════════ */
+            .veh-financing-wrap {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            .veh-financing {
+                padding: 80px 0;
+                background: linear-gradient(180deg, #060606 0%, #0a0a0a 100%);
+            }
+
+            .veh-financing__inner {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+                background: #111111;
+                border: 1px solid rgba(254, 197, 34, 0.18);
+                border-radius: 20px;
+                padding: 56px 52px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .veh-financing__inner::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -10%;
+                width: 55%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(254, 197, 34, 0.07), transparent 65%);
+                pointer-events: none;
+            }
+
+            .veh-financing__title {
+                font-family: 'Raleway', sans-serif;
+                font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+                font-weight: 800;
+                color: #fff;
+                line-height: 1.05;
+                margin: 12px 0 16px;
+            }
+
+            .veh-financing__desc {
+                color: rgba(255, 255, 255, 0.72);
+                line-height: 1.75;
+                font-size: 0.97rem;
+                margin-bottom: 26px;
+            }
+
+            .veh-financing__badges {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-bottom: 30px;
+            }
+
+            .veh-financing__badges span {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                background: rgba(254, 197, 34, 0.1);
+                border: 1px solid rgba(254, 197, 34, 0.28);
+                color: #fec522;
+                font-size: 0.78rem;
+                font-weight: 600;
+                letter-spacing: 0.04em;
+                padding: 6px 14px;
+                border-radius: 999px;
+            }
+
+            .veh-financing__badges span i { font-size: 0.88rem; }
+
+            .veh-financing__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+            .veh-financing__btn-primary {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 13px 26px;
+                border-radius: 9px;
+                background: #fec522;
+                color: #111;
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.92rem;
+                font-weight: 700;
+                text-decoration: none;
+                transition: background 0.2s, transform 0.2s;
+            }
+
+            .veh-financing__btn-primary:hover { background: #ffd43b; color: #111; transform: translateY(-2px); }
+
+            .veh-financing__btn-ghost {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 13px 26px;
+                border-radius: 9px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: rgba(255, 255, 255, 0.85);
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.92rem;
+                font-weight: 600;
+                text-decoration: none;
+                background: transparent;
+                transition: border-color 0.2s, color 0.2s, transform 0.2s;
+            }
+
+            .veh-financing__btn-ghost:hover { border-color: rgba(254, 197, 34, 0.5); color: #fec522; transform: translateY(-2px); }
+
+            /* Plan cards */
+            .veh-financing__plans { display: flex; flex-direction: column; gap: 14px; }
+
+            .veh-financing__plan {
+                display: grid;
+                grid-template-columns: 80px 1fr;
+                grid-template-rows: auto auto;
+                column-gap: 22px;
+                align-items: center;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.07);
+                border-radius: 14px;
+                padding: 20px 26px;
+                transition: border-color 0.3s, background 0.3s;
+            }
+
+            .veh-financing__plan:hover { border-color: rgba(254, 197, 34, 0.3); background: rgba(254, 197, 34, 0.04); }
+            .veh-financing__plan--featured { border-color: rgba(254, 197, 34, 0.38); background: rgba(254, 197, 34, 0.05); }
+
+            .veh-financing__plan-tenor {
+                font-family: 'Poppins', sans-serif;
+                font-size: 2rem;
+                font-weight: 700;
+                color: #fec522;
+                line-height: 1;
+                grid-row: 1 / 3;
+            }
+
+            .veh-financing__plan-tenor span {
+                display: block;
+                font-size: 0.65rem;
+                font-weight: 500;
+                color: rgba(255, 255, 255, 0.45);
+                margin-top: 3px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+
+            .veh-financing__plan-label {
+                font-size: 0.78rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: rgba(255, 255, 255, 0.9);
+                margin-bottom: 3px;
+            }
+
+            .veh-financing__plan p { font-size: 0.84rem; color: rgba(255, 255, 255, 0.52); line-height: 1.5; margin: 0; }
+
+            /* ── Responsive ── */
+            @media (max-width: 860px) {
+                .veh-financing__inner { grid-template-columns: 1fr; gap: 40px; padding: 40px 36px; }
+            }
+
+            @media (max-width: 640px) {
+                .veh-financing { padding: 60px 0; }
+                .veh-financing__inner { padding: 32px 24px; }
+                .veh-financing__actions { flex-direction: column; }
+                .veh-financing__btn-primary,
+                .veh-financing__btn-ghost { justify-content: center; }
+            }
+
+            @media (max-width: 400px) {
+                .veh-financing__inner { padding: 26px 18px; }
+                .veh-financing__plan { grid-template-columns: 66px 1fr; padding: 18px; }
+            }
+        </style>
     </head>
 
     <body class="service-details-page">
@@ -62,6 +244,7 @@
                 <a class="btn-getstarted d-none d-sm-block" href="/quote.html">Request Quote</a>
             </div>
         </header>
+
         <main class="main">
             <!-- Page Title -->
             <div class="page-title dark-background" data-aos="fade" style="background-image: url(/assets/imgs/services/vehicles_hero.jpg)">
@@ -70,12 +253,13 @@
                     <nav class="breadcrumbs">
                         <ol>
                             <li><a href="/index.html">Home</a></li>
-                            <li><a href="/services.html">Services</a></li>
+                            <li><a href="/products.html">Products</a></li>
                             <li class="current">Vehicles</li>
                         </ol>
                     </nav>
                 </div>
             </div>
+
             <!-- Intro Section -->
             <section class="fm-power" aria-labelledby="fm-power-title">
                 <div class="fm-power__inner" id="fmPower">
@@ -85,16 +269,20 @@
                     <div class="fm-power__content">
                         <div class="fm-power__heading">
                             <span class="fm-power__accent" aria-hidden="true"></span>
-                            <h2 id="fm-power-title" class="fm-power__h2">A Full Garage of Modern Mobility</h2>
+                            <h2 id="fm-power-title" class="fm-power__h2">Every Vehicle You Need. On Terms That Work.</h2>
                         </div>
-                        <p class="fm-power__lead"> In partnership with Mikano Motors, CEMEX puts brand-new sedans, SUVs, pickups, commercial vehicles, and range-extended electric models within reach — for individuals, families, and corporate fleets across Nigeria. </p>
+                        <p class="fm-power__lead">
+                            In partnership with Mikano Motors, CEMEX puts brand-new sedans, SUVs, pickups, commercial vehicles, and range-extended electric models within reach — for individuals, families, and corporate fleets across Nigeria.
+                        </p>
                         <div class="fm-power__body">
-                            <p> Four authorised brands, factory warranties of up to <strong>6 years / 200,000 km</strong>, and access to Mikano's nationwide service centres. Flexible financing with payment terms of 12–48 months, corporate fleet deals, and trade-ins available across every category. <strong>All prices exclude VAT.</strong>
+                            <p>
+                                Four authorised brands. Factory warranties of up to <strong>6 years / 200,000 km</strong>. Access to Mikano's nationwide service network and guaranteed genuine-parts supply. Flexible financing with payment terms of 12–48 months.<strong>All prices exclude VAT and are subject to change without notice.</strong>
                             </p>
                         </div>
                     </div>
                 </div>
             </section>
+
             <!-- Brand Strip -->
             <section class="brand-strip" aria-label="Brands we distribute">
                 <p class="brand-strip__label">Authorised distribution partners</p>
@@ -106,6 +294,7 @@
                     <img src="/assets/imgs/services/brand_zna.png" alt="ZNA" />
                 </div>
             </section>
+
             <!-- Why Buy With CEMEX -->
             <section id="offerings">
                 <div class="container text-center">
@@ -120,23 +309,31 @@
                         </div>
                         <div class="offer-card">
                             <i class="bi bi-shield-check"></i>
-                            <h3>Genuine Warranty</h3>
-                            <p>Factory warranties up to 6 years / 200,000 km, nationwide service centres, and guaranteed genuine-parts supply.</p>
+                            <h3>Genuine Factory Warranty</h3>
+                            <p>Up to 6 years / 200,000 km coverage, nationwide Mikano service centres, and guaranteed genuine-parts availability on every model.</p>
                         </div>
                         <div class="offer-card">
                             <i class="bi bi-wallet2"></i>
                             <h3>Flexible Financing</h3>
-                            <p>Bank-backed auto loans with flexible 12–48 month tenors to suit your budget and vehicle choice.</p>
+                            <p>Bank-backed auto loans with 12–48 month tenors for individuals, families, and corporate fleets.</p>
+                        </div>
+                        <div class="offer-card">
+                            <i class="bi bi-lightning-charge-fill"></i>
+                            <h3>REEV &amp; EV Models Available</h3>
+                            <p>Range-Extended Electric Vehicles from Deepal — up to 1,100 km combined range. Drive further, refuel less.</p>
                         </div>
                     </div>
                 </div>
             </section>
+
             <!-- Vehicle Catalogue -->
             <section class="svc-subsection svc-subsection--alt" id="catalogue">
                 <div class="svc-subsection__header">
                     <span class="svc-subsection__eyebrow">Catalogue</span>
                     <h2 class="svc-subsection__title">Browse the Current Line-Up</h2>
-                    <p class="svc-subsection__lead"> Sedans, SUVs, pickups, commercial vehicles, and EV/REEV models across four brands. Filter by category to narrow the list. All prices shown exclude VAT — final pricing confirmed at quotation. </p>
+                    <p class="svc-subsection__lead">
+                        Sedans, SUVs, pickups, commercial vehicles, and EV/REEV models across four authorised brands. Filter by category to narrow your search. All prices exclude VAT — final pricing confirmed at quotation.
+                    </p>
                 </div>
                 <!-- Category tabs -->
                 <div class="cat-tabs" role="tablist" aria-label="Vehicle categories" data-cat-tabs>
@@ -159,7 +356,7 @@
                         <i class="bi bi-lightning-charge-fill"></i><span>EV / REEV</span>
                     </button>
                 </div>
-                <!-- Vehicle grid — all cards preserved, price label updated to "excl. VAT" -->
+                <!-- Vehicle grid -->
                 <div class="vehicle-grid" data-cat-grid>
                     <article class="vehicle-card reveal" data-category="suv">
                         <div class="vehicle-card__media">
@@ -755,78 +952,61 @@
                             </div>
                         </div>
                     </article>
-                </div>
+                </div><!-- /vehicle-grid -->
             </section>
-            <!-- Financing -->
-            <section class="svc-subsection" id="financing">
-                <div class="svc-subsection__header">
-                    <span class="svc-subsection__eyebrow">Financing</span>
-                    <h2 class="svc-subsection__title">Drive Away on Terms That Work</h2>
-                    <p class="svc-subsection__lead"> All vehicle prices exclude VAT. Spread the balance across 12–48 months with bank-backed auto loans or corporate fleet financing. Talk to us about trade-ins and fleet packages. </p>
-                </div>
-                <div class="finance-callout">
-                    <div class="finance-callout__grid">
-                        <div>
-                            <h3 class="finance-callout__title">Flexible Vehicle Finance</h3>
-                            <p class="finance-callout__desc"> Available for individuals, families, and corporates. Deposit and monthly payment confirmed at the quotation stage. Fleet buyers from 5 units qualify for special pricing. </p>
-                            <div class="finance-callout__meta">
-                                <div class="finance-callout__meta-item">
-                                    <span class="label">Tenor</span>
-                                    <span class="value">12 – 48 months</span>
-                                </div>
-                                <div class="finance-callout__meta-item">
-                                    <span class="label">Prices</span>
-                                    <span class="value">Exclude VAT</span>
-                                </div>
-                                <div class="finance-callout__meta-item">
-                                    <span class="label">Trade-In</span>
-                                    <span class="value">Accepted</span>
-                                </div>
+
+            <!-- Financing CTA Banner -->
+            <section class="veh-financing" id="financing">
+                <div class="veh-financing-wrap">
+                    <div class="veh-financing__inner">
+                        <!-- Left: copy + CTAs -->
+                        <div class="veh-financing__lead">
+                            <span class="svc-subsection__eyebrow">Vehicle Financing</span>
+                            <h2 class="veh-financing__title">Drive Away.<br>Pay Over Time.</h2>
+                            <p class="veh-financing__desc">
+                                Spread the cost of any vehicle across 12–48 months with bank-backed auto loans. Suitable for individuals, families, and corporate fleet buyers — deposit and monthly payment confirmed at the quotation stage.
+                            </p>
+                            <div class="veh-financing__badges">
+                                <span><i class="bi bi-award-fill"></i> Factory Warranty Included</span>
+                               
+                                <span><i class="bi bi-receipt"></i> Prices Exclude VAT</span>
                             </div>
-                            <a class="finance-callout__cta" href="/quote.html?service=vehicles">
-                                <span>Get a Finance Quote</span>
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
+                            <div class="veh-financing__actions">
+                                <a class="veh-financing__btn-primary" href="/quote.html?service=vehicles">
+                                    Get a Finance Quote <i class="bi bi-arrow-right"></i>
+                                </a>
+                                <a class="veh-financing__btn-ghost" href="/contact.html">Talk to Us</a>
+                            </div>
                         </div>
-                        <div>
-                            <div class="finance-callout__table-wrap">
-                            <table class="finance-callout__table" aria-label="Vehicle financing options">
-                                <thead>
-                                    <tr>
-                                        <th>Plan</th>
-                                        <th>Tenor</th>
-                                        <th>Best For</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="tier">Short-Term</td>
-                                        <td>12 months</td>
-                                        <td>Individual / SME</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tier">Standard</td>
-                                        <td>24 months</td>
-                                        <td>Individual / Corporate</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tier">Extended</td>
-                                        <td>36 months</td>
-                                        <td>Corporate / Fleet</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tier">Long-Term</td>
-                                        <td>48 months</td>
-                                        <td>Fleet (5+ vehicles)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            </div><!-- /finance-callout__table-wrap -->
+                        <!-- Right: plan cards -->
+                        <div class="veh-financing__plans">
+                            <div class="veh-financing__plan">
+                                <div class="veh-financing__plan-tenor">12<span>months</span></div>
+                                <div class="veh-financing__plan-label">Short-Term</div>
+                                <p>Suited for individual buyers and SMEs with a stronger initial deposit.</p>
+                            </div>
+                            <div class="veh-financing__plan veh-financing__plan--featured">
+                                <div class="veh-financing__plan-tenor">24<span>months</span></div>
+                                <div class="veh-financing__plan-label">Standard</div>
+                                <p>The most common choice for individuals and corporate buyers.</p>
+                            </div>
+                            <div class="veh-financing__plan">
+                                <div class="veh-financing__plan-tenor">36<span>months</span></div>
+                                <div class="veh-financing__plan-label">Extended</div>
+                                <p>Ideal for corporate fleet buyers and high-value vehicle purchases.</p>
+                            </div>
+                            <div class="veh-financing__plan">
+                                <div class="veh-financing__plan-tenor">48<span>months</span></div>
+                                <div class="veh-financing__plan-label">Long-Term</div>
+                                <p>Available for fleet orders of 5+ vehicles with preferred pricing.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
         </main>
+
         <footer id="footer" class="footer dark-background">
             <div class="footer-top">
                 <div class="container">
@@ -898,6 +1078,7 @@
                 </div>
             </div>
         </footer>
+
         <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
             <i class="bi bi-arrow-up-short"></i>
         </a>
@@ -934,11 +1115,7 @@
                     tab.setAttribute('aria-selected', 'true');
                     const filter = tab.dataset.filter;
                     cards.forEach(card => {
-                        if (filter === 'all' || card.dataset.category === filter) {
-                            card.style.display = '';
-                        } else {
-                            card.style.display = 'none';
-                        }
+                        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
                     });
                 });
             });
