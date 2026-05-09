@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Generators — CEMEX Project Integrated</title>
+        <meta name="description" content="Sales, installation, and maintenance of premium diesel generators — Yorc — Nigeria's best-selling generator brand. 5-Year Warranty. Flexible 12–36 month financing across Nigeria." />
+        <meta name="keywords" content="Generators, Diesel Generator, Yorc, Soundproof Generator, Open Generator, Standby Power, CEMEX Nigeria" />
+        <link href="/assets/imgs/general/logo/logo_no-bg.png" rel="icon" />
+        <link href="/assets/imgs/general/logo/cemex-logo.jpg" rel="apple-touch-icon" />
+        <link href="https://fonts.googleapis.com" rel="preconnect" />
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Poppins:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet" />
+        <link href="/src/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/src/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+        <link href="/src/vendor/aos/aos.css" rel="stylesheet" />
+        <link href="/src/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+        <link href="/src/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+        <link href="/src/css/main.css" rel="stylesheet" />
+        <link href="/src/css/services.css" rel="stylesheet" />
+        <link href="/src/css/services_v2.css" rel="stylesheet" />
+        <style>
+            /* ── Pricing wrap (stats + footer strip) ── */
+            .gen-pricing-wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+
+            /* ── Stats bar ── */
+            .gen-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 40px; }
+            .gen-stat {
+                background: #1a1a1a; border: 1px solid rgba(255,255,255,0.06);
+                border-radius: 12px; padding: 20px 24px;
+                display: flex; align-items: center; gap: 16px;
+            }
+            .gen-stat__icon {
+                width: 44px; height: 44px; border-radius: 10px;
+                background: rgba(254,197,34,0.12);
+                display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+            }
+            .gen-stat__icon i { font-size: 22px; color: #fec522; }
+            .gen-stat__label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.45); margin-bottom: 3px; }
+            .gen-stat__value { font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 600; color: #fff; }
+
+            /* ── Footer note strip ── */
+            .gen-footer {
+                display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+                padding: 22px 28px; background: #141414; border: 1px solid rgba(255,255,255,0.06); border-radius: 12px;
+            }
+            .gen-footer__note { font-size: 0.82rem; color: rgba(255,255,255,0.42); line-height: 1.6; max-width: 560px; }
+            .gen-footer__note strong { color: rgba(255,255,255,0.68); }
+            .gen-footer__cta {
+                display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px;
+                border-radius: 8px; background: #fec522; color: #111;
+                font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 700;
+                text-decoration: none; white-space: nowrap; flex-shrink: 0;
+                transition: background 0.2s, transform 0.2s;
+            }
+            .gen-footer__cta:hover { background: #ffd43b; transform: translateY(-2px); }
+
+            /* ── CTA Banner (Financing) ── */
+            .gen-cta-banner {
+                padding: 80px 20px;
+                background: #060606;
+            }
+            .gen-cta-banner__inner {
+                max-width: 1160px; margin: 0 auto;
+                background: #fec522;
+                border-radius: 16px;
+                padding: 52px 60px;
+                display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap;
+            }
+            .gen-cta-banner__text { flex: 1; min-width: 260px; }
+            .gen-cta-banner__eyebrow {
+                display: inline-block; font-size: 0.7rem; font-weight: 700;
+                letter-spacing: 0.2em; text-transform: uppercase; color: rgba(0,0,0,0.5);
+                margin-bottom: 10px;
+            }
+            .gen-cta-banner__title {
+                font-family: 'Raleway', sans-serif; font-size: clamp(1.5rem, 3vw, 2.1rem);
+                font-weight: 800; color: #111; line-height: 1.15; margin: 0 0 10px;
+            }
+            .gen-cta-banner__subtitle { font-size: 1rem; color: rgba(0,0,0,0.62); line-height: 1.55; margin: 0; }
+            .gen-cta-banner__actions { display: flex; gap: 14px; flex-wrap: wrap; flex-shrink: 0; }
+            .gen-cta-banner__btn-primary {
+                display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+                border-radius: 9px; background: #111; color: #fec522;
+                font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700;
+                text-decoration: none; transition: background 0.2s, transform 0.2s;
+                white-space: nowrap;
+            }
+            .gen-cta-banner__btn-primary:hover { background: #000; transform: translateY(-2px); }
+            .gen-cta-banner__btn-ghost {
+                display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+                border-radius: 9px; border: 2px solid rgba(0,0,0,0.22); color: #111;
+                font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600;
+                text-decoration: none; background: transparent;
+                transition: background 0.2s, transform 0.2s; white-space: nowrap;
+            }
+            .gen-cta-banner__btn-ghost:hover { background: rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+            @media (max-width: 640px) {
+                .gen-stats { grid-template-columns: 1fr 1fr; }
+                .gen-stats .gen-stat:last-child { grid-column: 1/-1; }
+                .gen-cards { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+                .gen-footer { flex-direction: column; }
+                .gen-cta-banner__inner { padding: 36px 28px; flex-direction: column; text-align: center; }
+                .gen-cta-banner__actions { justify-content: center; }
+            }
+        </style>
+    </head>
+
+    <body class="service-details-page">
+        <header id="header" class="header d-flex align-items-center fixed-top">
+            <div class="container-fluid container-xl position-relative d-flex align-items-center">
+                <a href="/index.html" class="logo d-flex align-items-center me-auto">
+                    <img src="/assets/imgs/general/logo/header_logo.png" alt="CEMEX Logo" />
+                </a>
+                  <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="/index.html">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                       
+                        <li class="dropdown">
+                            <a href="/services.html">
+                                <span>Services</span>
+                                <i class="bi bi-chevron-down toggle-dropdown"></i>
+                            </a>
+                            <ul>
+                                <li><a href="/html/services/power_solutions.html">Power Solutions</a></li>
+                                <li><a href="/html/services/marine_welfare_solutions.html">Marine &amp; Welfare Solutions</a></li>
+                                <li><a href="/html/services/construction_services.html">Construction Services</a></li>
+                                <li><a href="/html/services/facility_services.html">Facility Management</a></li>
+                            </ul>
+                        </li>
+                         <li class="dropdown">
+                            <a href="/products.html" class="active">
+                                <span>Products</span>
+                                <i class="bi bi-chevron-down toggle-dropdown"></i>
+                            </a>
+                            <ul>
+                                <li><a href="/html/products/generators.html">Generators</a></li>
+                                <li><a href="/html/products/solar_panels.html">Solar Panels</a></li>
+                                <li><a href="/html/products/vehicles.html">Vehicles</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
+                <a class="btn-getstarted d-none d-sm-block" href="/quote.html">Request Quote</a>
+            </div>
+        </header>
+
+        <main class="main">
+            <!-- Page Title -->
+            <div class="page-title dark-background" data-aos="fade" style="background-image: url(/assets/imgs/services/generators_hero.jpg)">
+                <div class="container position-relative">
+                    <h1>Generators</h1>
+                    <nav class="breadcrumbs">
+                        <ol>
+                            <li><a href="/index.html">Home</a></li>
+                            <li><a href="/services.html">Services</a></li>
+                            <li class="current">Generators</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Intro Section -->
+            <section class="fm-power" aria-labelledby="fm-power-title">
+                <div class="fm-power__inner" id="fmPower">
+                    <figure class="fm-power__figure" aria-hidden="false">
+                        <img class="fm-power__img" src="/assets/imgs/services/generators_intro.png" alt="Industrial diesel generator installed on site" />
+                    </figure>
+                    <div class="fm-power__content">
+                        <div class="fm-power__heading">
+                            <span class="fm-power__accent" aria-hidden="true"></span>
+                            <h2 id="fm-power-title" class="fm-power__h2">Nigeria's Best-Selling Generator. Backed by 5 Years.</h2>
+                        </div>
+                        <p class="fm-power__lead">
+                            CEMEX supplies and installs Yorc generators — Nigeria's number one selling generator brand — for homes, estates, industries, and large commercial operations. Every unit comes with a 5-year warranty and is commissioned by certified engineers.
+                        </p>
+                        <div class="fm-power__body">
+                            <p>
+                                Available in Open and Soundproof configurations from 15 KVA all the way to 750 KVA. Larger diesel and gas generators are available on request. Flexible payment plans of 12–36 months available for qualifying clients. All prices exclude VAT. Note: Prices are subject to change without notice.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+
+            <!-- Yorc Generator Pricing Cards -->
+            <section class="svc-subsection svc-subsection--alt" id="products">
+                <div class="svc-subsection__header">
+                    <span class="svc-subsection__eyebrow">Products &amp; Pricing</span>
+                    <h2 class="svc-subsection__title">Yorc Generator Price List</h2>
+                    <p class="svc-subsection__lead">
+                        18 capacity classes from 15 to 750 KVA. Open and Soundproof prices shown on every card. All prices exclude VAT.
+                    </p>
+                </div>
+
+                <!-- Stats bar -->
+                <div class="gen-pricing-wrap">
+                    <div class="gen-stats">
+                        <div class="gen-stat">
+                            <div class="gen-stat__icon"><i class="bi bi-lightning-charge-fill"></i></div>
+                            <div>
+                                <div class="gen-stat__label">Range</div>
+                                <div class="gen-stat__value">15 – 750 KVA</div>
+                            </div>
+                        </div>
+                        <div class="gen-stat">
+                            <div class="gen-stat__icon"><i class="bi bi-shield-fill-check"></i></div>
+                            <div>
+                                <div class="gen-stat__label">Warranty</div>
+                                <div class="gen-stat__value">5 Years</div>
+                            </div>
+                        </div>
+                        <div class="gen-stat">
+                            <div class="gen-stat__icon"><i class="bi bi-calendar2-check-fill"></i></div>
+                            <div>
+                                <div class="gen-stat__label">Payment Terms</div>
+                                <div class="gen-stat__value">12 – 36 Months</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category tabs -->
+                <div class="cat-tabs" role="tablist" aria-label="Generator size categories" data-gen-tabs>
+                    <button type="button" class="cat-tab is-active" role="tab" aria-selected="true" data-filter="all">
+                        <i class="bi bi-grid-fill"></i><span>All</span>
+                    </button>
+                    <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="small">
+                        <i class="bi bi-house-fill"></i><span>Small — Residential &amp; SME</span>
+                    </button>
+                    <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="mid">
+                        <i class="bi bi-building-fill"></i><span>Mid — Commercial &amp; Industrial</span>
+                    </button>
+                    <button type="button" class="cat-tab" role="tab" aria-selected="false" data-filter="large">
+                        <i class="bi bi-buildings-fill"></i><span>Large — Estate &amp; Heavy Industry</span>
+                    </button>
+                </div>
+
+                <!-- Bundle-style card grid -->
+                <div class="bundle-grid" data-gen-grid>
+
+                    <!-- Small -->
+                    <article class="bundle-card" data-category="small">
+                        <span class="bundle-card__tag">Residential &amp; SME</span>
+                        <div class="bundle-card__size">15<span>KVA</span></div>
+                        <div class="bundle-card__price">₦8,756,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦8,756,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦11,959,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-15kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="small">
+                        <span class="bundle-card__tag">Residential &amp; SME</span>
+                        <div class="bundle-card__size">20<span>KVA</span></div>
+                        <div class="bundle-card__price">₦8,956,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦8,956,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦12,159,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-20kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="small">
+                        <span class="bundle-card__tag">Residential &amp; SME</span>
+                        <div class="bundle-card__size">30<span>KVA</span></div>
+                        <div class="bundle-card__price">₦10,280,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦10,280,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦13,914,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-30kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="small">
+                        <span class="bundle-card__tag">Residential &amp; SME</span>
+                        <div class="bundle-card__size">40/45<span>KVA</span></div>
+                        <div class="bundle-card__price">₦11,762,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦11,762,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦15,619,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-40kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="small">
+                        <span class="bundle-card__tag">Residential &amp; SME</span>
+                        <div class="bundle-card__size">50<span>KVA</span></div>
+                        <div class="bundle-card__price">₦12,662,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦12,662,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦16,519,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-50kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="small">
+                        <span class="bundle-card__tag">Residential &amp; SME</span>
+                        <div class="bundle-card__size">60<span>KVA</span></div>
+                        <div class="bundle-card__price">₦14,083,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦14,083,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦19,218,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-60kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="small">
+                        <span class="bundle-card__tag">Residential &amp; SME</span>
+                        <div class="bundle-card__size">65<span>KVA</span></div>
+                        <div class="bundle-card__price">₦14,783,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦14,783,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦19,918,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-65kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="small">
+                        <span class="bundle-card__tag">Residential &amp; SME</span>
+                        <div class="bundle-card__size">80<span>KVA</span></div>
+                        <div class="bundle-card__price">₦14,980,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦14,980,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦20,542,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-80kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <!-- Mid -->
+                    <article class="bundle-card bundle-card--featured" data-category="mid">
+                        <span class="bundle-card__tag">Commercial &amp; Industrial</span>
+                        <div class="bundle-card__size">100<span>KVA</span></div>
+                        <div class="bundle-card__price">₦17,845,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦17,845,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦23,837,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-100kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="mid">
+                        <span class="bundle-card__tag">Commercial &amp; Industrial</span>
+                        <div class="bundle-card__size">125/135<span>KVA</span></div>
+                        <div class="bundle-card__price">₦23,170,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦23,170,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦30,216,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-125kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="mid">
+                        <span class="bundle-card__tag">Commercial &amp; Industrial</span>
+                        <div class="bundle-card__size">150<span>KVA</span></div>
+                        <div class="bundle-card__price">₦24,532,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦24,532,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦31,782,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-150kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="mid">
+                        <span class="bundle-card__tag">Commercial &amp; Industrial</span>
+                        <div class="bundle-card__size">200<span>KVA</span></div>
+                        <div class="bundle-card__price">₦30,471,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦30,471,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦40,142,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-200kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="mid">
+                        <span class="bundle-card__tag">Commercial &amp; Industrial</span>
+                        <div class="bundle-card__size">250<span>KVA</span></div>
+                        <div class="bundle-card__price">₦41,767,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦41,767,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦53,132,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-250kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <!-- Large -->
+                    <article class="bundle-card" data-category="large">
+                        <span class="bundle-card__tag">Estate &amp; Heavy Industry</span>
+                        <div class="bundle-card__size">320/350<span>KVA</span></div>
+                        <div class="bundle-card__price">₦52,465,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦52,465,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦69,515,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-320kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="large">
+                        <span class="bundle-card__tag">Estate &amp; Heavy Industry</span>
+                        <div class="bundle-card__size">400<span>KVA</span></div>
+                        <div class="bundle-card__price">₦61,489,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦61,489,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦79,892,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-400kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="large">
+                        <span class="bundle-card__tag">Estate &amp; Heavy Industry</span>
+                        <div class="bundle-card__size">500<span>KVA</span></div>
+                        <div class="bundle-card__price">₦75,832,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦75,832,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦96,117,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-500kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="large">
+                        <span class="bundle-card__tag">Estate &amp; Heavy Industry</span>
+                        <div class="bundle-card__size">650/670<span>KVA</span></div>
+                        <div class="bundle-card__price">₦89,621,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦89,621,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦115,814,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-650kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="bundle-card" data-category="large">
+                        <span class="bundle-card__tag">Estate &amp; Heavy Industry</span>
+                        <div class="bundle-card__size">750<span>KVA</span></div>
+                        <div class="bundle-card__price">₦127,996,000<small>Open configuration · Excl. VAT</small></div>
+                        <ul class="bundle-card__features">
+                            <li><i class="bi bi-wind" style="color:var(--accent-color);margin-right:6px;"></i><strong>Open:</strong> ₦127,996,000</li>
+                            <li><i class="bi bi-volume-mute-fill" style="color:var(--accent-color);margin-right:6px;"></i><strong>Soundproof:</strong> ₦170,145,000</li>
+                            <li>5-Year Yorc manufacturer warranty</li>
+                            <li>Financing: 12–36 months available</li>
+                        </ul>
+                        <a class="bundle-card__cta" href="/quote.html?product=yorc-750kva">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                </div><!-- /bundle-grid -->
+
+                <!-- Footer note -->
+                <div class="gen-pricing-wrap" style="margin-top:32px;">
+                    <div class="gen-footer">
+                        <p class="gen-footer__note">
+                            <strong>Note:</strong> All prices exclude VAT and are subject to change without notice. Larger diesel and gas generators are available on request.
+                        </p>
+                        <a class="gen-footer__cta" href="/quote.html?service=generators">
+                            Request a Quote <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Financing CTA Banner -->
+            <section class="gen-cta-banner" id="financing">
+                <div class="gen-cta-banner__inner">
+                    <div class="gen-cta-banner__text">
+                        <span class="gen-cta-banner__eyebrow">Financing Available</span>
+                        <h2 class="gen-cta-banner__title">Spread the cost over 12–36 months.</h2>
+                        <p class="gen-cta-banner__subtitle">Both Open and Soundproof units are available on structured payment plans. 5-Year Yorc warranty included on every unit. All prices exclude VAT.</p>
+                    </div>
+                    <div class="gen-cta-banner__actions">
+                        <a class="gen-cta-banner__btn-primary" href="/quote.html?service=generators">
+                            Request a Quote <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a class="gen-cta-banner__btn-ghost" href="/contact.html">
+                            Talk to Us
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer id="footer" class="footer dark-background">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row gy-5">
+                        <div class="col-lg-4 footer-about">
+                            <a href="/index.html" class="logo">
+                                <img src="/assets/imgs/general/logo/header_logo.png" alt="CEMEX Logo" class="footer-logo-img" />
+                            </a>
+                            <p class="tagline">Engineering The Integrated Infrastructure Of Tomorrow.</p>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-6 col-md-6 footer-links">
+                                    <h4>Services</h4>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/html/services/power_solutions.html">Power Solutions</a></li>
+                                        <li><a href="/html/services/construction_services.html">Construction Services</a></li>
+                                        <li><a href="/html/services/facility_services.html">Facility Management</a></li>
+                                        <li><a href="/html/services/marine_welfare_solutions.html">Marine &amp; Welfare Solutions</a></li>
+                                        <li><a href="/html/services/generators.html">Generators</a></li>
+                                        <li><a href="/html/services/solar_panels.html">Solar Panels</a></li>
+                                        <li><a href="/html/services/vehicles.html">Vehicles</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 col-md-6 footer-links">
+                                    <h4>Company</h4>
+                                    <ul class="list-unstyled">
+                                        <li><a href="/about.html">About Us</a></li>
+                                        <li><a href="/contact.html">Contact Us</a></li>
+                                        <li><a href="/quote.html">Get Quote</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 footer-contact">
+                            <h4>Our Locations</h4>
+                            <div class="directions-list">
+                                <div class="direction-item mb-3">
+                                    <div class="icon-wrapper"><i class="bi bi-geo-alt-fill"></i></div>
+                                    <div class="d-flex flex-column">
+                                        <span class="location-label">Lagos Office</span>
+                                        <a href="https://maps.app.goo.gl/cp6UMkgkJGr1mEnr8" target="_blank" class="map-link">View on Map <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                                <div class="direction-item">
+                                    <div class="icon-wrapper"><i class="bi bi-geo-alt-fill"></i></div>
+                                    <div class="d-flex flex-column">
+                                        <span class="location-label">Warri Office</span>
+                                        <a href="https://maps.app.goo.gl/1eqjsxX12nxUcMNu5" target="_blank" class="map-link">View on Map <i class="bi bi-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container copyright">
+                <div class="copyright-content">
+                    <p class="mb-0">
+                        <strong class="sitename">© CEMEX Project Integrated LTD</strong>
+                        <span>All Rights Reserved</span>
+                    </p>
+                    <div class="credits">Designed by <a href="https://www.linkedin.com/in/joshua-trevor-stevenson/" target="_blank">Nexora Web Agency</a></div>
+                </div>
+            </div>
+        </footer>
+
+        <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
+            <i class="bi bi-arrow-up-short"></i>
+        </a>
+        <div id="preloader"></div>
+        <script src="/src/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/src/vendor/aos/aos.js"></script>
+        <script src="/src/vendor/purecounter/purecounter_vanilla.js"></script>
+        <script src="/src/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="/src/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="/src/js/main.js"></script>
+        <script>
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.2 }
+            );
+            document.querySelectorAll(".offer-card").forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.1}s`;
+                observer.observe(card);
+            });
+            // fm-power entry animation
+            const fmEl = document.getElementById('fmPower');
+            if (fmEl) {
+                const fmObs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => { if (e.isIntersecting) { fmEl.classList.add('in-view'); fmObs.unobserve(fmEl); } });
+                }, { threshold: 0.15 });
+                fmObs.observe(fmEl);
+            }
+        </script>
+        <script src="/src/js/services.js"></script>
+        <script src="/src/js/services_v2.js"></script>
+        <script>
+            // Category filter tabs — generators
+            const genTabs = document.querySelectorAll('[data-gen-tabs] .cat-tab');
+            const genCards = document.querySelectorAll('[data-gen-grid] .bundle-card');
+            genTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    genTabs.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+                    tab.classList.add('is-active');
+                    tab.setAttribute('aria-selected', 'true');
+                    const filter = tab.dataset.filter;
+                    genCards.forEach(card => {
+                        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
+                    });
+                });
+            });
+            // Reveal animation for bundle-cards
+            const bundleObs = new IntersectionObserver((entries) => {
+                entries.forEach((e, i) => {
+                    if (e.isIntersecting) {
+                        setTimeout(() => e.target.classList.add('visible'), i * 50);
+                        bundleObs.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.06 });
+            document.querySelectorAll('[data-gen-grid] .bundle-card').forEach(c => bundleObs.observe(c));
+        </script>
+    </body>
+
+</html>
