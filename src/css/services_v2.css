@@ -979,7 +979,7 @@
 
 
 /* ==========================================================================
-   10. REDUCED-MOTION / RESPONSIVE HELPERS
+   10. REDUCED-MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
     .product-card,
@@ -992,18 +992,202 @@
     }
 }
 
-@media (max-width: 600px) {
-    .svc-subsection {
-        padding: 60px 0;
+
+/* ==========================================================================
+   11. RESPONSIVE — TABLET  (≤ 900px)
+   ========================================================================== */
+@media (max-width: 900px) {
+
+    /* Section headers */
+    .svc-subsection { padding: 64px 0; }
+    .svc-subsection__header { margin-bottom: 36px; }
+
+    /* Product grid — tighter min so 2 cols still fit on tablet */
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
     }
 
-    .product-card__body,
-    .bundle-card,
-    .estate-card {
-        padding: 24px;
+    /* Bundle & estate grids — same */
+    .bundle-grid {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 20px;
     }
+
+    .estate-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    /* Vehicle grid */
+    .vehicle-grid {
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 20px;
+    }
+
+    /* Finance callout table — allow horizontal scroll */
+    .finance-callout__table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* CTA strip */
+    .cta-strip { padding: 36px 24px; }
+}
+
+
+/* ==========================================================================
+   12. RESPONSIVE — MOBILE  (≤ 640px)
+   ========================================================================== */
+@media (max-width: 640px) {
+
+    /* ── Section spacing ── */
+    .svc-subsection { padding: 52px 0; }
+    .svc-subsection__header {
+        margin-bottom: 28px;
+        padding: 0 20px;
+    }
+    .svc-subsection__title { font-size: clamp(1.35rem, 5vw, 1.7rem); }
+    .svc-subsection__lead  { font-size: 0.92rem; }
+
+    /* ── Product grid → single column ── */
+    .product-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 20px;
+    }
+
+    .product-card__body { padding: 20px 22px 24px; }
 
     .product-card__specs {
         grid-template-columns: 1fr 1fr;
+        gap: 8px 12px;
     }
+
+    /* ── Bundle grid → 1-col with slightly tighter padding ── */
+    .bundle-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 20px;
+    }
+
+    .bundle-card { padding: 28px 22px; }
+
+    .bundle-card__size { font-size: 1.65rem; }
+
+    /* ── Estate grid → single column ── */
+    .estate-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 20px;
+    }
+
+    .estate-card { padding: 28px 22px; }
+
+    /* ── Finance callout ── */
+    .finance-callout { padding: 28px 20px; }
+
+    .finance-callout__grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .finance-callout__meta { gap: 20px; }
+
+    .finance-callout__table {
+        font-size: 0.82rem;
+        min-width: 480px;       /* forces horizontal scroll on narrow screens */
+    }
+
+    .finance-callout__table th,
+    .finance-callout__table td { padding: 10px 14px; }
+
+    /* ── Category filter tabs → horizontal scroll strip ── */
+    .cat-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+        padding: 0 20px 8px;    /* bottom padding shows scroll shadow */
+        scrollbar-width: none;  /* Firefox */
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+
+    .cat-tabs::-webkit-scrollbar { display: none; }
+
+    .cat-tab {
+        flex-shrink: 0;         /* tabs never collapse */
+        padding: 9px 16px;
+        font-size: 0.82rem;
+    }
+
+    .cat-tab i { font-size: 0.88rem; }
+
+    /* ── Vehicle grid → single column ── */
+    .vehicle-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 0 20px;
+    }
+
+    .vehicle-card__body { padding: 18px 20px 20px; }
+
+    /* Stack price + CTA on very small screens */
+    .vehicle-card__footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .vehicle-card__cta {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* ── CTA strip → single column ── */
+    .cta-strip {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 32px 20px;
+        border-radius: 12px;
+        margin: 0 20px;
+    }
+
+    .cta-strip__actions { justify-content: center; }
+
+    /* ── Brand strip logos → smaller, tighter ── */
+    .brand-strip { padding: 36px 0; }
+
+    .brand-strip__list {
+        gap: 24px;
+        padding: 0 24px;
+    }
+
+    .brand-strip__list img { height: 28px; }
+}
+
+
+/* ==========================================================================
+   13. RESPONSIVE — SMALL MOBILE  (≤ 400px)
+   ========================================================================== */
+@media (max-width: 400px) {
+
+    /* Single-column specs (instead of 2-col) */
+    .product-card__specs { grid-template-columns: 1fr; }
+
+    /* Tighter card padding */
+    .bundle-card,
+    .estate-card { padding: 22px 18px; }
+
+    .product-card__body { padding: 16px 18px 20px; }
+
+    /* Finance meta stack vertically */
+    .finance-callout__meta { flex-direction: column; gap: 14px; }
+
+    /* CTA strip full bleed */
+    .cta-strip { margin: 0 12px; border-radius: 10px; }
+
+    /* Vehicle card specs wrap tighter */
+    .vehicle-card__specs { gap: 10px; font-size: 0.78rem; }
 }

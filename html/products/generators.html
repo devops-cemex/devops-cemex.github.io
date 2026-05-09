@@ -97,13 +97,27 @@
             }
             .gen-cta-banner__btn-ghost:hover { background: rgba(0,0,0,0.08); transform: translateY(-2px); }
 
+            @media (max-width: 860px) {
+                .gen-stats { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+                .gen-stat { padding: 16px 18px; gap: 12px; }
+                .gen-cta-banner__inner { padding: 40px 36px; }
+            }
+
             @media (max-width: 640px) {
                 .gen-stats { grid-template-columns: 1fr 1fr; }
                 .gen-stats .gen-stat:last-child { grid-column: 1/-1; }
                 .gen-cards { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
                 .gen-footer { flex-direction: column; }
+                .gen-footer__note { max-width: 100%; }
                 .gen-cta-banner__inner { padding: 36px 28px; flex-direction: column; text-align: center; }
                 .gen-cta-banner__actions { justify-content: center; }
+            }
+
+            @media (max-width: 400px) {
+                .gen-stats { grid-template-columns: 1fr; }
+                .gen-stats .gen-stat:last-child { grid-column: auto; }
+                .gen-stat { padding: 14px 16px; }
+                .gen-cta-banner__inner { padding: 28px 20px; }
             }
         </style>
     </head>
